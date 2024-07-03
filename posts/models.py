@@ -31,6 +31,8 @@ class Post(BaseModel):
     hashtag = models.ManyToManyField(Hashtag, blank= True)
 
 class Comment(BaseModel):
+    id = models.AutoField(primary_key= True)
+    post_id = models.ForeignKey(Post, on_delete = models.CASCADE, null = True, default = '')
     content = models.TextField(verbose_name= "내용")
     writer = models.CharField(verbose_name= "작성자", max_length= 20)
 
